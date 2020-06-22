@@ -134,6 +134,40 @@ i:before {
   right: -60px;
   bottom: 7px;
 }
+.account{
+  margin: 0 10px;
+}
+.account:hover .header__notify{
+  display: flex;
+}
+.header__notify{
+  position: absolute;
+   z-index: 1; 
+  top: 135%;
+  right: -70px;
+  width: 100px;
+  border: 1px solid#D3D3D3;
+  border-radius: 3px;
+  background-color: rgb(50, 182, 57);
+  display: flex;
+  flex-direction: column;
+   display: none; 
+}
+.header__notify::after{
+  position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 10px;
+    top: -10px;
+    left: 0;
+}
+.login-button{
+font-size: 14px;
+text-decoration: none;
+color: blue;
+}
+
 
 .main_title p {
   font-size: 20px;
@@ -374,6 +408,9 @@ i:before {
 .account a{
   margin: 0 5px;
 } 
+.account{
+  position: relative;
+}
 
 .main_header_area + section, .main_header_area + div, .main_header_area + .row {
   margin-top: 135px;
