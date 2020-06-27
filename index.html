@@ -11,7 +11,7 @@
     <link href="css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+   
 </head>
 <body>
     <!--MAIN-->
@@ -30,7 +30,7 @@
                     <ul class="h_search list_style">
                         <li class="shop_cart"><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                         <li<button class="account"><a href="login/login.html"><i class="fa fa-user"></i></a></button></li>
-                        <li class="popup-with-zoom-anim"><a href="#test-search"><i class="fa fa-search"></i></a></li>
+                        <li<button class="openBtn()" onclick="openSearch()"><a href="#search"><i class="fa fa-search"></i></a></button></li>
                     </ul>
                 </div>
             </div>
@@ -152,7 +152,28 @@
         
         </div>
     </footer>
+    <!--================Search Box Area =================-->
+    
+    <div id="myOverlay" class="overlay">
+        <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+        <div class="overlay-content">
+         
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+       
+        </div>
+      </div>
+    <!--================End Search Box Area =================-->
     <script src="js/theme.js"></script>
+    <script>
+        function openSearch() {
+          document.getElementById("myOverlay").style.display = "block";
+        }
+        
+        function closeSearch() {
+          document.getElementById("myOverlay").style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
