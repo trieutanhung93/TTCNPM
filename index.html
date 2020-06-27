@@ -11,7 +11,7 @@
     <link href="css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+   
 </head>
 <body>
     <!--MAIN-->
@@ -35,8 +35,6 @@
                                     <a href="" class="login-button">Infomation</a>
                             </div>
                         </a></button></li<button>
-                        <li class="popup-with-zoom-anim"><a href="#test-search"><i class="fa fa-search"></i></a></li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -157,7 +155,28 @@
         
         </div>
     </footer>
+    <!--================Search Box Area =================-->
+    
+    <div id="myOverlay" class="overlay">
+        <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+        <div class="overlay-content">
+         
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+       
+        </div>
+      </div>
+    <!--================End Search Box Area =================-->
     <script src="js/theme.js"></script>
+    <script>
+        function openSearch() {
+          document.getElementById("myOverlay").style.display = "block";
+        }
+        
+        function closeSearch() {
+          document.getElementById("myOverlay").style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
