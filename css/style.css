@@ -137,7 +137,7 @@ i:before {
 .account{
   margin: 0 10px;
 }
-.account:hover .header__notify{
+/* .account:hover .header__notify{
   display: flex;
 }
 .header__notify{
@@ -161,7 +161,7 @@ i:before {
     height: 10px;
     top: -10px;
     left: 0;
-}
+} */
 .login-button{
 font-size: 14px;
 text-decoration: none;
@@ -363,37 +363,6 @@ color: blue;
 /**
  * Simple fade transition,
  */
- .mfp-fade.mfp-bg {
-    opacity: 0;
-    -webkit-transition: all 0.15s ease-out;
-    -moz-transition: all 0.15s ease-out;
-    -o-transition: all 0.15s ease-out;
-    transition: all 0.15s ease-out;
-  }
-  
-  .mfp-fade.mfp-bg.mfp-ready {
-    opacity: 0.8;
-  }
-  
-  .mfp-fade.mfp-bg.mfp-removing {
-    opacity: 0;
-  }
-  
-  .mfp-fade.mfp-wrap .mfp-content {
-    opacity: 0;
-    -webkit-transition: all 0.15s ease-out;
-    -moz-transition: all 0.15s ease-out;
-    -o-transition: all 0.15s ease-out;
-    transition: all 0.15s ease-out;
-  }
-  
-  .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
-    opacity: 1;
-  }
-  
-  .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
-    opacity: 0;
-  }
 /*----------------------------------------------------*/
 /* Main Header Area css
 ============================================================================================ */
@@ -1128,7 +1097,60 @@ img {vertical-align: middle;}
 ============================================================================================ */
 /* Search Popup Area css
 ============================================================================================ */
-
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9); /* Black with a little bit see-through */
+}
+.overlay-content {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+.overlay .closebtn:hover {
+  color: #000000;
+}
+.overlay input[type=text] {
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+}
+.overlay input[type=text]:hover {
+  background: #f1f1f1;
+}
+/* Style the submit button */
+.overlay button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.overlay button:hover {
+  background: #bbb;
+}
 /* End Search Popup Area css
 ============================================================================================ */
 /* Contact Success and error Area css
