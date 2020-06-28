@@ -137,7 +137,7 @@ i:before {
 .account{
   margin: 0 10px;
 }
-.account:hover .header__notify{
+/* .account:hover .header__notify{
   display: flex;
 }
 .header__notify{
@@ -161,7 +161,7 @@ i:before {
     height: 10px;
     top: -10px;
     left: 0;
-}
+} */
 .login-button{
 font-size: 14px;
 text-decoration: none;
