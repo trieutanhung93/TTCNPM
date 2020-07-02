@@ -1,14 +1,15 @@
-﻿@using BKFoodCourt.Models
+﻿
+@using BKFoodCourt.Models
 
 @{
     ViewBag.Title = "Index";
-    if (LoginSignUpModel.State == true)
+    if (LoginSignUpModel.State == false)
     {
-        Layout = "~/Views/Shared/_Layout2.cshtml";
+        Layout = "~/Views/Shared/_Layout.cshtml";
     }
     else
     {
-        Layout = "~/Views/Shared/_Layout1.cshtml";
+        Layout = "~/Views/Shared/_Layout_Customer.cshtml";
     }
 }
 
@@ -98,4 +99,6 @@
         </div>
     </div>
 </section>
+
+
 

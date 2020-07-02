@@ -8,11 +8,11 @@ namespace BKFoodCourt.Models
 {
     public class AccountModel
     {
-        public BKFoodCourtDbContext context = null;
+        public AccountDBContext context = null;
 
         public AccountModel()
         {
-            context = new BKFoodCourtDbContext();
+            context = new AccountDBContext();
         }
         public bool Login(string Email, string PassWord)
         {

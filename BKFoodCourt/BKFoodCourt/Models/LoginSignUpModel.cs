@@ -17,5 +17,7 @@ namespace BKFoodCourt.Models
         public string Name { set; get; }
 
         public static bool State { set; get; }
+
+        public static int typeAccount { set; get; }
     }
 }
