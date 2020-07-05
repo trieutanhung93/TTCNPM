@@ -71,3 +71,7 @@ E:\HK192\Thực tập công nghệ phần mền\BKFoodCourt\BKFoodCourt\obj\Debu
 E:\HK192\Thực tập công nghệ phần mền\BKFoodCourt\BKFoodCourt\obj\Debug\BKFoodCourt.csproj.CopyComplete
 E:\HK192\Thực tập công nghệ phần mền\BKFoodCourt\BKFoodCourt\obj\Debug\BKFoodCourt.dll
 E:\HK192\Thực tập công nghệ phần mền\BKFoodCourt\BKFoodCourt\obj\Debug\BKFoodCourt.pdb
+E:\HK192\Thực tập công nghệ phần mền\BKFoodCourt\BKFoodCourt\bin\PagedList.dll
+E:\HK192\Thực tập công nghệ phần mền\BKFoodCourt\BKFoodCourt\bin\PagedList.Mvc.dll
+E:\HK192\Thực tập công nghệ phần mền\BKFoodCourt\BKFoodCourt\bin\PagedList.xml
+E:\HK192\Thực tập công nghệ phần mền\BKFoodCourt\BKFoodCourt\bin\PagedList.Mvc.xml

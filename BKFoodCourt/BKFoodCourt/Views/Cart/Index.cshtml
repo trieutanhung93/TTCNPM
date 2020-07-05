@@ -1,9 +1,10 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout2.cshtml";
+    Layout = "~/Views/Shared/_Layout_Customer.cshtml";
 }
 
+@using BKFoodCourt.Models;
 
 @section css
 {
@@ -13,125 +14,88 @@
 }
 
 <div class="wrap cf">
-    <h1 class="projTitle">Responsive Table<span>-Less</span> Shopping Cart</h1>
+    <h1 class="projTitle">BKFoodCourt Checkout</h1>
     <div class="heading cf">
         <h1>My Cart</h1>
-        <a href=@Url.Action("Index","Menu") class="continue">Continue Shopping</a>
+        <a href=@Url.Action("Index","Menu/Index") class="continue">Continue Shopping</a>
     </div>
+
     <div class="cart">
         <ul class="cartWrap">
-            <li class="items odd">
 
-                <div class="infoWrap">
-                    <div class="cartSection">
-                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                        <p class="itemNumber">#QUE-007544-002</p>
-                        <h3>Item Name 1</h3>
+            @if (CartModel.cart.list.Count() == 0)
+            {
+                <h2>No item in Cart</h2>
+            }
 
-                        <p> <input type="text" class="qty" placeholder="3" /> x $5.00</p>
+            @foreach (KeyValuePair<int, int> item in CartModel.cart.list)
+            {
+                Food food = CartModel.findFood(item.Key);
 
-                        <p class="stockStatus"> In Stock</p>
+                <li class="items odd">
+
+                    <div class="infoWrap">
+                        <div class="cartSection">
+                            <img src=@food.Url alt="" class="itemImg" />
+                            <p class="itemNumber">#FOOD-@food.ID</p>
+                            <h3>@food.Name</h3>
+
+                            <p> <input type="text" class="qty" placeholder="@item.Value" /> x $@food.Price</p>
+
+                        </div>
+
+
+                        <div class="prodTotal cartSection">
+                            <p>@(food.Price*item.Value)</p>
+                        </div>
+                        <div class="cartSection removeWrap">
+                            <a href="@Url.Action("Remove", "Cart", new { id = food.ID })" class="remove">x</a>
+                        </div>
                     </div>
-
-
-                    <div class="prodTotal cartSection">
-                        <p>$15.00</p>
-                    </div>
-                    <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
-                    </div>
-                </div>
-            </li>
-            <li class="items even">
-
-                <div class="infoWrap">
-                    <div class="cartSection">
-
-                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                        <p class="itemNumber">#QUE-007544-002</p>
-                        <h3>Item Name 1</h3>
-
-                        <p> <input type="text" class="qty" placeholder="3" /> x $5.00</p>
-
-                        <p class="stockStatus"> In Stock</p>
-                    </div>
-
-
-                    <div class="prodTotal cartSection">
-                        <p>$15.00</p>
-                    </div>
-                    <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="items odd">
-                <div class="infoWrap">
-                    <div class="cartSection">
-
-                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                        <p class="itemNumber">#QUE-007544-002</p>
-                        <h3>Item Name 1</h3>
-
-                        <p> <input type="text" class="qty" placeholder="3" /> x $5.00</p>
-
-                        <p class="stockStatus out"> Out of Stock</p>
-                    </div>
-
-
-                    <div class="prodTotal cartSection">
-                        <p>$15.00</p>
-                    </div>
-                    <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
-                    </div>
-                </div>
-            </li>
-            <li class="items even">
-                <div class="infoWrap">
-                    <div class="cartSection info">
-
-                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                        <p class="itemNumber">#QUE-007544-002</p>
-                        <h3>Item Name 1</h3>
-
-                        <p> <input type="text" class="qty" placeholder="3" /> x $5.00</p>
-
-                        <p class="stockStatus"> In Stock</p>
-
-                    </div>
-
-
-                    <div class="prodTotal cartSection">
-                        <p>$15.00</p>
-                    </div>
-
-                    <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
-                    </div>
-                </div>
-                <div class="special"><div class="specialContent">Free gift with purchase!, gift wrap, etc!!</div></div>
-            </li>
+                </li>
+            }
 
         </ul>
     </div>
 
-    <div class="promoCode">
-        <label for="promo">Have A Promo Code?</label><input type="text" name="promo" placholder="Enter Code" />
-        <a href="#" class="btn"></a>
-    </div>
 
     <div class="subtotal cf">
         <ul>
             <li class="totalRow"><span class="label">Subtotal</span><span class="value">$35.00</span></li>
-
-            <li class="totalRow"><span class="label">Shipping</span><span class="value">$5.00</span></li>
-
-            <li class="totalRow"><span class="label">Tax</span><span class="value">$4.00</span></li>
-            <li class="totalRow final"><span class="label">Total</span><span class="value">$44.00</span></li>
-            <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
         </ul>
+    </div>
+
+    <div class="row mt-5 pt-3 d-flex">
+        <div class="col-md-6 d-flex">
+
+        </div>
+        <div class="col-md-6">
+            <div class="cart-detail bg-light p-3 p-md-4">
+                <h3 class="billing-heading mb-4">Payment Method</h3>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" class="mr-2"> Momo</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" class="mr-2"> Cash</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
+                        </div>
+                    </div>
+                </div>
+                <p><a href="#" class="btn btn-primary py-3 px-4">Place an order</a></p>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -139,3 +103,5 @@
 {
     <script src="~/Assets/Cart/main.js"></script>
 }
+
+

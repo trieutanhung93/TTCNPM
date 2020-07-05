@@ -35,10 +35,11 @@ namespace BKFoodCourt.Controllers
                 cmd.Parameters.Add("@PassWord", model.PassWord);
                 cmd.Parameters.Add("@Name", model.Name);
                 cmd.ExecuteNonQuery();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Login");
             }
             else
             {
+                ModelState.AddModelError("", "Đăng ký không thành công");
                 ModelState.AddModelError("", "Email đã được sử dụng");
                 LoginSignUpModel.State = false;
             }

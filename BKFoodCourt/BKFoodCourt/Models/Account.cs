@@ -23,9 +23,7 @@ namespace BKFoodCourt.Models
         [StringLength(50)]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string TypeAccount { get; set; }
+        public int TypeAccount { get; set; }
 
         public int Wallet { get; set; }
     }
