@@ -133,10 +133,12 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CookController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DatabaseAccess\Dao\FoodDao.cs" />
     <Compile Include="DatabaseAccess\Dao\UserDao.cs" />
     <Compile Include="DatabaseAccess\EF\Account.cs" />
     <Compile Include="DatabaseAccess\EF\BKFoodCourt.cs" />
@@ -144,6 +146,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FoodModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SignupModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2037,12 +2040,11 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Food\Detail.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Signup.cshtml" />
     <Content Include="Views\Shared\_LayoutManager.cshtml" />
@@ -2053,11 +2055,13 @@
     <Content Include="Views\Admin\UpdateMenu.cshtml" />
     <Content Include="Views\Cook\OrderList.cshtml" />
     <Content Include="Views\Admin\Statistic.cshtml" />
-    <Content Include="Views\Home\UserInfo.cshtml" />
     <Content Include="Views\Cook\CookInfo.cshtml" />
     <Content Include="Views\Admin\AdminInfo.cshtml" />
     <Content Include="Views\Admin\CreateAccount.cshtml" />
     <Content Include="Views\Shared\_LayoutNotLogin.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Contact.cshtml" />
+    <Content Include="Views\Customer\UserInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

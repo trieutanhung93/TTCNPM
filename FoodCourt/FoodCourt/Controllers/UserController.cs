@@ -36,7 +36,7 @@ namespace FoodCourt.Controllers
                         userSession.Name = user.Name;
                         Session.Add(CommonConstant.USER_SESSION, userSession);
                         
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Customer");
                     case 1: //Admin
                         userSession.Email = user.Email;
                         userSession.typeAcc = 1;
@@ -96,6 +96,12 @@ namespace FoodCourt.Controllers
                 
             }
             return View("Signup");
+        }
+
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

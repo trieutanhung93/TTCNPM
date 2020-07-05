@@ -24,7 +24,5 @@ namespace FoodCourt.DatabaseAccess.EF
         public string Name { get; set; }
 
         public int TypeAccount { get; set; }
-
-        public int Wallet { get; set; }
     }
 }
