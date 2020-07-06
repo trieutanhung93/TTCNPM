@@ -8,31 +8,31 @@ using System.Web.Mvc;
 
 namespace FoodCourt.Controllers
 {
-    public class CookController : Controller
+    public class CustomerController : Controller
     {
-        // GET: Cook
+        // GET: Customer
         public ActionResult Index()
         {
             LoginModel login = Session[CommonConstant.USER_SESSION] as LoginModel;
-            if (login == null || login.typeAcc != 2)
+            if (login == null || login.typeAcc != 0)
             {
                 return RedirectToAction("Login", "User");
             }
             return View();
         }
-        public ActionResult OrderList()
+        public ActionResult Contact()
         {
             LoginModel login = Session[CommonConstant.USER_SESSION] as LoginModel;
-            if (login == null || login.typeAcc != 2)
+            if (login == null || login.typeAcc != 0)
             {
                 return RedirectToAction("Login", "User");
             }
             return View();
         }
-        public ActionResult CookInfo()
+        public ActionResult UserInfo()
         {
             LoginModel login = Session[CommonConstant.USER_SESSION] as LoginModel;
-            if (login == null || login.typeAcc != 2)
+            if (login == null || login.typeAcc != 0)
             {
                 return RedirectToAction("Login", "User");
             }

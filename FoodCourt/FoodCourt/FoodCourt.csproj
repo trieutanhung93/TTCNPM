@@ -128,15 +128,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\CartSession.cs" />
     <Compile Include="Common\CommonConstant.cs" />
     <Compile Include="Common\UserSession.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CookController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DatabaseAccess\Dao\FoodDao.cs" />
     <Compile Include="DatabaseAccess\Dao\UserDao.cs" />
     <Compile Include="DatabaseAccess\EF\Account.cs" />
     <Compile Include="DatabaseAccess\EF\BKFoodCourt.cs" />
@@ -144,6 +147,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SignupModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1835,16 +1839,8 @@
     <Content Include="Assets\vendor\jquery\jquery.min.js" />
     <Content Include="Assets\vendor\jquery\jquery.slim.js" />
     <Content Include="Assets\vendor\jquery\jquery.slim.min.js" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Assets\scss\navs\_global.scss" />
     <Content Include="Assets\scss\navs\_sidebar.scss" />
     <Content Include="Assets\scss\navs\_topbar.scss" />
@@ -2017,17 +2013,6 @@
     <Content Include="Assets\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Assets\vendor\jquery\jquery.min.map" />
     <Content Include="Assets\vendor\jquery\jquery.slim.min.map" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2037,12 +2022,11 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Food\Detail.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Signup.cshtml" />
     <Content Include="Views\Shared\_LayoutManager.cshtml" />
@@ -2053,27 +2037,19 @@
     <Content Include="Views\Admin\UpdateMenu.cshtml" />
     <Content Include="Views\Cook\OrderList.cshtml" />
     <Content Include="Views\Admin\Statistic.cshtml" />
-    <Content Include="Views\Home\UserInfo.cshtml" />
     <Content Include="Views\Cook\CookInfo.cshtml" />
     <Content Include="Views\Admin\AdminInfo.cshtml" />
     <Content Include="Views\Admin\CreateAccount.cshtml" />
     <Content Include="Views\Shared\_LayoutNotLogin.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Contact.cshtml" />
+    <Content Include="Views\Customer\UserInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

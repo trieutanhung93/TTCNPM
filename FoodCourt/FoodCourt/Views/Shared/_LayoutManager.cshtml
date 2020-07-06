@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="~/Assets/img/hcmut.jpg" />
-    <title>Admin Area - BK FoodCourt</title>
+    <title>@ViewBag.Title - BK FoodCourt</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/Assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href=@Url.Action("Index","Home")>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href=@Url.Action("Index","Admin")>
                 <div class="sidebar-brand-icon rotate-n-15">
                     <!-- <i class="fas fa-laugh-wink"></i> -->
                     <img src="~/Assets/img/hcmut.jpg" height="50px" width="50px">
@@ -46,7 +46,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href=@Url.Action("Index","Admin")>
                     <i class="fa fa-home"></i>
-                    <span>Home</span>
+                    <span>Trang chủ</span>
                 </a>
             </li>
 
@@ -58,7 +58,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-file"></i>
-                    <span>Xem report</span>
+                    <span>Xem báo cáo</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -70,13 +70,13 @@
             <li class="nav-item">
                 <a class="nav-link" href=@Url.Action("UpdateMenu","Admin")>
                     <i class="fa fa-edit "></i>
-                    <span>Update menu</span>
+                    <span>Cập nhật menu</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href=@Url.Action("CreateAccount","Admin")>
                     <i class="fa fa-plus "></i>
-                    <span>Create Account</span>
+                    <span>Tạo tài khoản</span>
                 </a>
             </li>
 
@@ -141,10 +141,10 @@
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    Alerts Center
+                                    Trung tâm thông báo
                                 </h6>
-                                <a class="dropdown-item d-flex align-items-center">No alert.</a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                <a class="dropdown-item d-flex align-items-center">Không có thông báo</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Hiển thị tất cả.</a>
                             </div>
                         </li>
 
@@ -154,19 +154,22 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào Admin,</span>
+                                @{
+                                    FoodCourt.Models.LoginModel user = Session[FoodCourt.Common.CommonConstant.USER_SESSION] as FoodCourt.Models.LoginModel;
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào Admin, @user.Name</span>
+                                }
                                 <!-- <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> -->
                                 <i class="fa fa-user"></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href=@Url.Action("Login","User")>
+                                <a class="dropdown-item" href=@Url.Action("UserInfo","Admin")>
                                     <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Log In
+                                    Thông tin
                                 </a>
-                                <a class="dropdown-item" href=@Url.Action("Signup","User")>
+                                <a class="dropdown-item" href=@Url.Action("Logout","User")>
                                     <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Sign Up
+                                    Đăng xuất
                                 </a>
                             </div>
                         </li>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FoodCourt.DatabaseAccess.Dao;
+using FoodCourt.DatabaseAccess.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +11,11 @@ namespace FoodCourt.Controllers
     public class FoodController : Controller
     {
         // GET: Food
-        public ActionResult Detail(string searching)
+        public ActionResult Detail(int foodId)
         {
-            
-            return View();
+            var dao = new FoodDao();
+            Food food = dao.getById(foodId);
+            return View(food);
         }
     }
 }

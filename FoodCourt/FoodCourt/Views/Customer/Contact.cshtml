@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Contact";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
 }
 
 <section class="contact-section" style="padding-top: 50px;">
@@ -20,7 +20,7 @@
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="name" class="sr-only">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Name">
+                        <input type="text" class="form-control" id="name" placeholder="Tên">
                     </div>
                     <div class="form-group">
                         <label for="email" class="sr-only">Email</label>
@@ -29,10 +29,10 @@
                     <div class="form-group">
                         <label for="message" class="sr-only">Message</label>
                         <textarea name="message" id="message" cols="30" rows="10" class="form-control"
-                                  placeholder="Write your message"></textarea>
+                                  placeholder="Viết tin nhắn của bạn"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary btn-lg" value="Send Message">
+                        <input type="submit" class="btn btn-primary btn-lg" value="Gửi tin nhắn">
                     </div>
                 </form>
             </div>

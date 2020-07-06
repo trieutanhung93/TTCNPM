@@ -12,16 +12,26 @@ namespace FoodCourt.DatabaseAccess.EF
         public int ID { get; set; }
 
         [Required]
-        [StringLength(325)]
+        [StringLength(500)]
         public string Name { get; set; }
 
         public int Price { get; set; }
 
         [Required]
-        [StringLength(325)]
-        public string Url { get; set; }
-
         [StringLength(500)]
         public string Description { get; set; }
+
+        [Required]
+        [StringLength(4000)]
+        public string Url1 { get; set; }
+
+        [Required]
+        [StringLength(4000)]
+        public string Url2 { get; set; }
+
+        [Required]
+        [StringLength(4000)]
+        public string Url3 { get; set; }
+
     }
 }

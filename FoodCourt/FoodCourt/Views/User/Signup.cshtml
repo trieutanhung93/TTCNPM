@@ -14,7 +14,7 @@
     <meta name="author" content="">
 
     <link rel="icon" href="~/Assets/img/hcmut.jpg" />
-    <title>SignUp - BK FoodCourt</title>
+    <title>Đăng kí - BK FoodCourt</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/Assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -37,38 +37,38 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Tạo một tài khoản mới</h1>
                             </div>
                             @using (Html.BeginForm("SignupAction","User"))
                             {
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Name, new { @class="form-control form-control-user", @id = "exampleInputEmail", @placeholder = "Name", @autofocus="true" })
+                                    @Html.TextBoxFor(model => model.Name, new { @class="form-control form-control-user", @id = "exampleInputEmail", @placeholder = "Tên", @autofocus="true" })
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Email, new { @type="email", @class="form-control form-control-user", @id="exampleInputEmail", @placeholder="Email Address"})
+                                    @Html.TextBoxFor(model => model.Email, new { @type="email", @class="form-control form-control-user", @id="exampleInputEmail", @placeholder="Địa chỉ email"})
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        @Html.PasswordFor(model => model.PassWord, new { @class="form-control form-control-user", @id="exampleInputPassword", @placeholder="Password" })
+                                        @Html.PasswordFor(model => model.PassWord, new { @class="form-control form-control-user", @id="exampleInputPassword", @placeholder="Mật khẩu" })
                                     </div>
                                     <div class="col-sm-6">
-                                        @Html.PasswordFor(model => model.RetypePassWord, new { @class = "form-control form-control-user", @id = "exampleInputPassword", @placeholder = "Repeat Password" })  
+                                        @Html.PasswordFor(model => model.RetypePassWord, new { @class = "form-control form-control-user", @id = "exampleInputPassword", @placeholder = "Nhập lại mật khẩu" })  
                                     </div>
                                 </div>
                                  @Html.AntiForgeryToken();
                                  @Html.ValidationSummary(true, null, new { @class="alert alert-danger"})
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Sign Up"/>
+                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Đăng kí"/>
                                 <hr>
                                 <a href="#" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
+                                    <i class="fab fa-google fa-fw"></i> Đăng kí bằng Google
                                 </a>
                                 <a href="#" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                    <i class="fab fa-facebook-f fa-fw"></i> Đăng kí bằng Facebook
                                 </a>
                             }
                             <hr>
                             <div class="text-center">
-                                <a class="small" href=@Url.Action("Login","User")>Already have an account? Login!</a>
+                                <a class="small" href=@Url.Action("Login","User")>Bạn đã có tài khoản? Hãy đăng nhập!</a>
                             </div>
                         </div>
                     </div>
