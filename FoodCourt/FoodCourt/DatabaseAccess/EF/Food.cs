@@ -32,5 +32,6 @@ namespace FoodCourt.DatabaseAccess.EF
         [Required]
         [StringLength(4000)]
         public string Url3 { get; set; }
+
     }
 }

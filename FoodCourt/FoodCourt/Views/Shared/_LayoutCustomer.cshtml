@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using FoodCourt.Models
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -44,7 +45,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href=@Url.Action("Index","Customer")>
                     <i class="fa fa-home"></i>
-                    <span>Home</span>
+                    <span>Trang chủ</span>
                 </a>
             </li>
 
@@ -62,18 +63,18 @@
             <li class="nav-item">
                 <a class="nav-link" href=@Url.Action("Index","Cart")>
                     <i class="fa fa-shopping-cart "></i>
-                    <span>Cart</span>
+                    <span>Giỏ hàng</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-phone"></i>
-                    <span>Contact</span>
+                    <span>Liên hệ</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="https://www.facebook.com/bkfoodcourt">About Us</a>
-                        <a class="collapse-item" href=@Url.Action("Contact","Customer")>Contact Us</a>
+                        <a class="collapse-item" href="https://www.facebook.com/bkfoodcourt">Face book</a>
+                        <a class="collapse-item" href=@Url.Action("Contact","Customer")>Liên hệ chúng tôi</a>
                     </div>
                 </div>
             </li>
@@ -105,10 +106,10 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    @using (Html.BeginForm("Index","Menu",FormMethod.Get))
+                    @using (Html.BeginForm("Index","Menu",FormMethod.Get,new { @class = "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" }))
                     {
                         <div class="input-group">
-                            @Html.TextBox("search",null,new {@class="form-control bg-light border-0 small", @placeholder="Search for..." })
+                            @Html.TextBox("search",null,new {@class="form-control bg-light border-0 small", @placeholder="Tìm kiếm món ăn..." })
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fa fa-search fa-sm"></i>
@@ -145,15 +146,15 @@
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                                <span class="badge badge-danger badge-counter">0</span>
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    Alerts Center
+                                    Trung tâm thông báo
                                 </h6>
-                                <a class="dropdown-item d-flex align-items-center">No alert.</a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                <a class="dropdown-item d-flex align-items-center">Không có thông báo</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Hiển thị tất cả.</a>
                             </div>
                         </li>
 
@@ -163,7 +164,10 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Tên đăng nhập</span>
+                                @{
+                                    LoginModel user = Session[FoodCourt.Common.CommonConstant.USER_SESSION] as LoginModel;
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào, @user.Name</span>
+                                }
                                 <!-- <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> -->
                                 <i class="fa fa-user"></i>
                             </a>
@@ -171,7 +175,7 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href=@Url.Action("UserInfo","Customer")>
                                     <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Thông tin
+                                    Thông tin tài khoản
                                 </a>
                                 <a class="dropdown-item" href=@Url.Action("Logout","User")>
                                     <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -222,24 +226,6 @@
             <i class="fa fa-angle-up"></i>
         </a>
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="~/Assets/vendor/jquery/jquery.min.js"></script>

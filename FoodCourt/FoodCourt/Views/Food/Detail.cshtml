@@ -43,7 +43,10 @@
                         <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.Price đồng</div>
                     </div>
                     <div class="col-auto">
-                        <a href=@Url.Action("Index","Cart") style="font-size:24px">Đặt hàng</a>
+                        @using (Html.BeginForm("addToCart", "Cart", new { foodId = Model.ID }))
+                        {
+                            <button type="submit" class="btn btn-success" style="font-size:18px">Thêm vào giỏ hàng</button>
+                        }
                     </div>
                 </div>
                 <br>
