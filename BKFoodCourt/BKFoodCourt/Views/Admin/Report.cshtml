@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
+}
+
+@model List<BKFoodCourt.DatabaseAccess.EF.DonHang>
+
+<h1 class="h3 mb-2 text-gray-800">Báo cáo</h1>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách đơn hàng đã hoàn thành</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID đơn hàng</th>
+                        <th>ID Khách hàng</th>
+                        <th>Tổng hóa đơn</th>
+                        <th>Vendor</th>
+                        <th>Thời gian</th>
+                        <th>Chi tiết</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID đơn hàng</th>
+                        <th>ID Khách hàng</th>
+                        <th>Tổng hóa đơn</th>
+                        <th>Vendor</th>
+                        <th>Thời gian</th>
+                        <th>Chi tiết</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.OrderCode</td>
+                            <td>@item.CustomerID</td>
+                            <td>@item.Price</td>
+                            <td>1</td>
+                            <td>@item.Timer.Day/@item.Timer.Month/@item.Timer.Year</td>
+                            <td><a href=@Url.Action("OrderDetail", "Customer", new { OrderID = item.ID })>Xem chi tiết</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
