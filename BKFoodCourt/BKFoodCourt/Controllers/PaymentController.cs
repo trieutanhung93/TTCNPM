@@ -139,7 +139,7 @@ namespace BKFoodCourt.Controllers
             item.CustomerID = loginModel.ID;
             item.Price = (int)tongTien();
             item.Timer = DateTime.Now;
-            item.State = false;
+            item.State = 0;
             dao.AddOrder(item);
         }
 

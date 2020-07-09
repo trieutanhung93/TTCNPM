@@ -1857,6 +1857,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\ListOrderModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Momo\MoMoSecurity.cs" />
     <Compile Include="Models\Momo\PaymentRequest.cs" />
@@ -2048,6 +2049,7 @@
     <Content Include="Views\Customer\OrderDetail.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Customer\UpdateInfo.cshtml" />
+    <Content Include="Views\Cook\Process.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

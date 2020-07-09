@@ -39,7 +39,25 @@ namespace BKFoodCourt.Controllers
                 return RedirectToAction("Login", "User");
             }
             var dao = new OrderDao();
-            List<DonHang> res = dao.getOrderList();
+            List<ListOrderModel> res = new List<ListOrderModel>();
+            List<DonHang> listOrder = new List<DonHang>();
+            listOrder = dao.getOrderList();
+            foreach(var item in listOrder)
+            {
+                ListOrderModel order = new ListOrderModel();
+                order.ID = item.ID;
+                order.OrderCode = item.OrderCode;
+                order.CustomerID = item.CustomerID;
+                order.Price = item.Price;
+                order.Timer = item.Timer;
+                order.State = 0;
+                List<OrderDetail> tmp = dao.getInfoOrder(item.ID);
+                foreach(var i in tmp)
+                {
+                    order.list.Add(i.FoodID, i.Quantily);
+                }
+                res.Add(order);
+            }
             return View(res);
         }
 
@@ -50,6 +68,32 @@ namespace BKFoodCourt.Controllers
                 return RedirectToAction("Login", "User");
             }
             return View();
+        }
+
+
+        public ActionResult Cancel(int ID)
+        {
+            var dao = new OrderDao();
+            DonHang item = dao.getOrder(ID);
+            item.State = 2;
+            dao.UpdateOrder(item);
+            return RedirectToAction("OrderList", "Cook");
+        }
+        
+        public ActionResult Process(int ID)
+        {
+            var dao = new OrderDao();
+            List<OrderDetail> res = dao.getInfoOrder(ID);
+            return View(res);
+        }
+
+        public ActionResult Finsh(int ID)
+        {
+            var dao = new OrderDao();
+            DonHang item = dao.getOrder(ID);
+            item.State = 1;
+            dao.UpdateOrder(item);
+            return RedirectToAction("OrderList", "Cook");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BKFoodCourt.DatabaseAccess.EF;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 
@@ -25,7 +26,7 @@ namespace BKFoodCourt.DatabaseAccess.Dao
         //See Report
         public List<DonHang> getReport()
         {
-            List<DonHang> res = db.DonHangs.Where(x => x.State == true).ToList();
+            List<DonHang> res = db.DonHangs.Where(x => x.State == 1).ToList();
             return res;
         }
 
@@ -39,7 +40,7 @@ namespace BKFoodCourt.DatabaseAccess.Dao
         //List Order
         public List<DonHang> getOrderList()
         {
-            List<DonHang> res = db.DonHangs.Where(x => x.State == false).ToList();
+            List<DonHang> res = db.DonHangs.Where(x => x.State == 0).ToList();
             return res;
         }
 
@@ -61,6 +62,18 @@ namespace BKFoodCourt.DatabaseAccess.Dao
             List<DonHang> tmp = db.DonHangs.ToList();
             DonHang item = tmp.ElementAt(tmp.Count - 1);
             return item.ID;
+        }
+
+        public DonHang getOrder(int ID)
+        {
+            List<DonHang> item = db.DonHangs.Where(x => x.ID == ID).ToList();
+            return item.ElementAt(0);
+        }
+
+        public void UpdateOrder(DonHang item)
+        {
+            db.DonHangs.AddOrUpdate(item);
+            db.SaveChanges();
         }
     }
 }

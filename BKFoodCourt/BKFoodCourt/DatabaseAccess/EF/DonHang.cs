@@ -30,7 +30,7 @@ namespace BKFoodCourt.DatabaseAccess.EF
         [Column(TypeName = "date")]
         public DateTime Timer { get; set; }
 
-        public bool State { get; set; }
+        public int State { get; set; }
 
         public virtual Account Account { get; set; }
 
