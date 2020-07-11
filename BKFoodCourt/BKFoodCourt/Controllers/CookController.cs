@@ -12,7 +12,6 @@ namespace BKFoodCourt.Controllers
 {
     public class CookController : Controller
     {
-        // GET: Cook
         private bool check()
         {
             LoginModel login = Session[CommonConstant.USER_SESSION] as LoginModel;
@@ -22,7 +21,7 @@ namespace BKFoodCourt.Controllers
             }
             return true;
         }
-
+        // GET: Cook
         public ActionResult Index()
         {
             if (!check())
@@ -31,7 +30,7 @@ namespace BKFoodCourt.Controllers
             }
             return View();
         }
-
+        //GET: OrderList
         public ActionResult OrderList()
         {
             if (!check())
@@ -42,7 +41,7 @@ namespace BKFoodCourt.Controllers
             List<ListOrderModel> res = new List<ListOrderModel>();
             List<DonHang> listOrder = new List<DonHang>();
             listOrder = dao.getOrderList();
-            foreach(var item in listOrder)
+            foreach (var item in listOrder)
             {
                 ListOrderModel order = new ListOrderModel();
                 order.ID = item.ID;
@@ -52,7 +51,7 @@ namespace BKFoodCourt.Controllers
                 order.Timer = item.Timer;
                 order.State = 0;
                 List<OrderDetail> tmp = dao.getInfoOrder(item.ID);
-                foreach(var i in tmp)
+                foreach (var i in tmp)
                 {
                     order.list.Add(i.FoodID, i.Quantily);
                 }
@@ -60,16 +59,6 @@ namespace BKFoodCourt.Controllers
             }
             return View(res);
         }
-
-        public ActionResult CookInfo()
-        {
-            if (!check())
-            {
-                return RedirectToAction("Login", "User");
-            }
-            return View();
-        }
-
 
         public ActionResult Cancel(int ID)
         {
@@ -79,7 +68,7 @@ namespace BKFoodCourt.Controllers
             dao.UpdateOrder(item);
             return RedirectToAction("OrderList", "Cook");
         }
-        
+
         public ActionResult Process(int ID)
         {
             var dao = new OrderDao();
@@ -95,5 +84,68 @@ namespace BKFoodCourt.Controllers
             dao.UpdateOrder(item);
             return RedirectToAction("OrderList", "Cook");
         }
+        
+        //GET: OrderInfo
+        public ActionResult CookInfo()
+        {
+            if (!check())
+            {
+                return RedirectToAction("Login", "User");
+            }
+            LoginModel login = Session[CommonConstant.USER_SESSION] as LoginModel;
+            return View(login);
+        }
+
+        public ActionResult UpdateInfo()
+        {
+            if (!check())
+            {
+                return RedirectToAction("Login", "User");
+            }
+            LoginModel login = Session[CommonConstant.USER_SESSION] as LoginModel;
+            UpdateModel update = new UpdateModel();
+            update.Name = login.Name;
+            update.Email = login.Email;
+            return View(update);
+        }
+
+        public ActionResult UpdateInfoAction(UpdateModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.NewPassword != null)
+                    model.NewPassword = model.NewPassword.Trim();
+                if (model.RetypePassword != null)
+                    model.RetypePassword = model.RetypePassword.Trim();
+                model.OldPassword = model.OldPassword.Trim();
+                if (model.Name != null)
+                    model.Name = model.Name.Trim();
+                if (model.NewPassword == model.RetypePassword)
+                {
+                    UserDao dao = new UserDao();
+                    Account acc = new Account();
+                    acc.Name = model.Name;
+                    acc.PassWord = model.NewPassword;
+                    acc.Email = model.Email;
+                    int res = dao.UpdateInfo(acc, model.OldPassword);
+                    if (res == 1)
+                    {
+                        LoginModel user = Session[CommonConstant.USER_SESSION] as LoginModel;
+                        user.Name = acc.Name;
+                        return RedirectToAction("CookInfo");
+                    }
+                    if (res == 0)
+                    {
+                        ModelState.AddModelError("", "Mật khẩu cũ không đúng");
+                    }
+                    if (res == -1)
+                    {
+                        ModelState.AddModelError("", "Lỗi cập nhật!");
+                    }
+                }
+            }
+            return RedirectToAction("UpdateInfo");
+        }
+
     }
 }

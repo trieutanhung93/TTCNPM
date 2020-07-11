@@ -50,6 +50,10 @@ namespace BKFoodCourt.Controllers
         }
         public ActionResult UpdateInfo()
         {
+            if (!check())
+            {
+                return RedirectToAction("Login", "User");
+            }
             LoginModel login = Session[CommonConstant.USER_SESSION] as LoginModel;
             UpdateModel update = new UpdateModel();
             update.Name = login.Name;
@@ -96,6 +100,10 @@ namespace BKFoodCourt.Controllers
 
         public ActionResult Order(int CustomerID)
         {
+            if (!check())
+            {
+                return RedirectToAction("Login", "User");
+            }
             var dao = new OrderDao();
             List<DonHang> res = dao.getDonHangOfCustomer(CustomerID);
             return View(res);
@@ -103,6 +111,10 @@ namespace BKFoodCourt.Controllers
 
         public ActionResult OrderDetail(int OrderID)
         {
+            if (!check())
+            {
+                return RedirectToAction("Login", "User");
+            }
             var dao = new OrderDao();
             List<OrderDetail> res = dao.getInfoOrder(OrderID);
             return View(res);

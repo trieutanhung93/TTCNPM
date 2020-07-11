@@ -3,8 +3,7 @@
     ViewBag.Title = "Report";
     Layout = "~/Views/Shared/_LayoutManager.cshtml";
 }
-
-@model List<BKFoodCourt.DatabaseAccess.EF.DonHang>
+@model List<BKFoodCourt.Models.ListOrderModel>
 
 <h1 class="h3 mb-2 text-gray-800">Báo cáo</h1>
 <!-- DataTales Example -->
@@ -17,40 +16,69 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ID đơn hàng</th>
-                        <th>ID Khách hàng</th>
-                        <th>Tổng hóa đơn</th>
-                        <th>Vendor</th>
-                        <th>Thời gian</th>
-                        <th>Chi tiết</th>
+                        <td rowspan="2">ID đơn hàng</td>
+                        <td rowspan="2">ID Khách hàng</td>
+                        <td rowspan="2">Thời gian Order</td>
+                        <td rowspan="2">ID Vendor</td>
+                        <td colspan="2">Đơn hàng</td>
+                        <td rowspan="2">Tổng đơn hàng</td>
+                    </tr>
+                    <tr>
+                        <td>Tên món ăn</td>
+                        <td>Số lượng</td>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID đơn hàng</th>
-                        <th>ID Khách hàng</th>
-                        <th>Tổng hóa đơn</th>
-                        <th>Vendor</th>
-                        <th>Thời gian</th>
-                        <th>Chi tiết</th>
+                        <td rowspan="2">ID đơn hàng</td>
+                        <td rowspan="2">ID Khách hàng</td>
+                        <td rowspan="2">Thời gian Order</td>
+                        <td rowspan="2">ID Vendor</td>
+                        <td colspan="2">Đơn hàng</td>
+                        <td rowspan="2">Tổng đơn hàng</td>
+                    </tr>
+                    <tr>
+                        <td>Tên món ăn</td>
+                        <td>Số lượng</td>
                     </tr>
                 </tfoot>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@item.OrderCode</td>
-                            <td>@item.CustomerID</td>
-                            <td>@item.Price</td>
-                            <td>1</td>
-                            <td>@item.Timer.Day/@item.Timer.Month/@item.Timer.Year</td>
-                            <td><a href=@Url.Action("OrderDetail", "Customer", new { OrderID = item.ID })>Xem chi tiết</a></td>
-                        </tr>
+                        if (item.list.Count == 1)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.CustomerID</td>
+                                <td>@item.Timer.Day/@item.Timer.Month/@item.Timer.Year</td>
+                                <td>1</td>
+                                <td>@item.getFood(item.list.ElementAt(0).Key).Name</td>
+                                <td>@item.list.ElementAt(0).Value</td>
+                                <td>@item.Price</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td rowspan="@item.list.Count">@item.ID</td>
+                                <td rowspan="@item.list.Count">@item.CustomerID</td>
+                                <td rowspan="@item.list.Count">@item.Timer.Day/@item.Timer.Month/@item.Timer.Year</td>
+                                <td rowspan="@item.list.Count">1</td>
+                                <td>@item.getFood(item.list.ElementAt(0).Key).Name</td>
+                                <td>@item.list.ElementAt(0).Value</td>
+                                <td rowspan="@item.list.Count">@item.Price</td>
+                            </tr>
+                            for (int i = 1; i < item.list.Count; i++)
+                            {
+                                <tr>
+                                    <td>@item.getFood(item.list.ElementAt(i).Key).Name</td>
+                                    <td>@item.list.ElementAt(i).Value</td>
+                                </tr>
+                            }
+                        }
                     }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
-

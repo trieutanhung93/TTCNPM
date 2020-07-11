@@ -30,17 +30,29 @@ namespace BKFoodCourt.DatabaseAccess.Dao
             return res;
         }
 
-        //Food Detail
-        public List<OrderDetail> getInfoOrder(int OrderID)
-        {
-            List<OrderDetail> res = db.OrderDetails.Where(x => x.OrderID == OrderID).ToList();
-            return res;
-        }
-
         //List Order
         public List<DonHang> getOrderList()
         {
             List<DonHang> res = db.DonHangs.Where(x => x.State == 0).ToList();
+            return res;
+        }
+
+        public List<DonHang> getOrderFinsh()
+        {
+            List<DonHang> res = db.DonHangs.Where(x => x.State == 1 || x.State == 2).ToList();
+            return res;
+        }
+
+        public List<DonHang> getOrderAll()
+        {
+            List<DonHang> res = db.DonHangs.ToList();
+            return res;
+        }
+
+        //Food Detail
+        public List<OrderDetail> getInfoOrder(int OrderID)
+        {
+            List<OrderDetail> res = db.OrderDetails.Where(x => x.OrderID == OrderID).ToList();
             return res;
         }
 
@@ -56,7 +68,7 @@ namespace BKFoodCourt.DatabaseAccess.Dao
             db.OrderDetails.Add(item);
             db.SaveChanges();
         }
-        
+
         public int getOrderID()
         {
             List<DonHang> tmp = db.DonHangs.ToList();

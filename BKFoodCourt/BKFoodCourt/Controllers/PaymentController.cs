@@ -93,6 +93,7 @@ namespace BKFoodCourt.Controllers
 
             AddOrder();
             AddOrderDetail();
+            Session.Remove(CommonConstant.CART_SESSION);
             return RedirectToAction("Index", "Cart");
         }
 
@@ -113,6 +114,7 @@ namespace BKFoodCourt.Controllers
 
             AddOrder();
             AddOrderDetail();
+            Session.Remove(CommonConstant.CART_SESSION);
             return RedirectToAction("Index", "Payment");
         }
 
