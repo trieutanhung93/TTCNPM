@@ -47,7 +47,8 @@ namespace BKFoodCourt.Controllers
             tongTien();
             return RedirectToAction("Index", "Cart");
         }
-        public void tongTien()
+
+        private void tongTien()
         {
             if (Session[CommonConstant.CART_SESSION] != null)
             {
@@ -144,11 +145,11 @@ namespace BKFoodCourt.Controllers
             {
                 if (state == 1)
                 {
-                    return RedirectToAction("Index", "Momo");
+                    return RedirectToAction("Cash", "Payment");
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Momo");
+                    return RedirectToAction("Momo", "Payment");
                 }
             }
             else
@@ -156,7 +157,6 @@ namespace BKFoodCourt.Controllers
                 ModelState.AddModelError("", "Bạn cần phải chấp nhận điều khoản và chính sách để có thể thực hiện thanh toán.");
                 return View("Index");
             }
-            return View();
         }
     }
 }
