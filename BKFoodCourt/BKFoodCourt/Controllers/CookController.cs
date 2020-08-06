@@ -102,7 +102,7 @@ namespace BKFoodCourt.Controllers
             return View(res);
         }
 
-        public ActionResult Finsh(int ID)
+        public ActionResult Finish(int ID)
         {
             var dao = new OrderDao();
             DonHang item = dao.getOrder(ID);
